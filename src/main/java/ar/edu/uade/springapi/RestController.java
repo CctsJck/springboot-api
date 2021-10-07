@@ -26,6 +26,8 @@ import vo.ResponsableVO;
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
 
+	System.out.println();
+
 
 	@RequestMapping("/hello")
 	public String hello(@RequestParam(name="name",defaultValue = "Extraño" ) String name) {
