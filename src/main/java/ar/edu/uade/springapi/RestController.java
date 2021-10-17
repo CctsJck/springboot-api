@@ -28,7 +28,7 @@ public class RestController {
 
 	@RequestMapping("/hello")
 	public String hello(@RequestParam(name="name",defaultValue = "Extraño" ) String name) {
-		return "Hola " + name + " Bievenido al Mundo Rest";
+		return "Hola " + name + " Bievenido al Mundo API";
 	}
 	
 	@RequestMapping("/getJugadoresClub")
