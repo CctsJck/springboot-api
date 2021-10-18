@@ -17,6 +17,7 @@ import exceptions.JugadorException;
 import exceptions.PartidoException;
 import exceptions.ResponsableException;
 import sessionManager.SessionManager;
+import vo.CampeonatoVO;
 import vo.JugadorVO;
 import vo.PartidoVO;
 import vo.ResponsableVO;
@@ -193,6 +194,14 @@ public class RestController {
 		List<PartidoVO> partidos = Controlador.getInstancia().obtenerPartidosCampeonato(idCampeonato);
 		SessionManager.getInstancia().closeSession();
 		return partidos;
+	}
+	
+	@RequestMapping("/obtenerCampeonatos")
+	public List<CampeonatoVO> getCampeonatos(){
+		SessionManager.getInstancia().openSession();
+		List<CampeonatoVO> campeonatos = Controlador.getInstancia().obtenerCampeonatos();
+		SessionManager.getInstancia().closeSession();
+		return campeonatos;	
 	}
 }
 
