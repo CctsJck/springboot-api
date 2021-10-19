@@ -19,6 +19,7 @@ import exceptions.PartidoException;
 import exceptions.ResponsableException;
 import sessionManager.SessionManager;
 import vo.CampeonatoVO;
+import vo.ClubVO;
 import vo.JugadorVO;
 import vo.PartidoVO;
 import vo.ResponsableVO;
@@ -228,5 +229,22 @@ public class RestController {
 		SessionManager.getInstancia().closeSession(); 
 		return campeonatos;	
 	}
+	
+	@RequestMapping("/obtenerClubesDisponiblesCampeonato")
+	@CrossOrigin(origins="http://localhost:3000/")
+	public List<ClubVO> getClubesDisponiblesCampeonato(int idCampeonato) throws CampeonatoException{
+		List <ClubVO> clubes = new ArrayList<>();
+		try {
+		SessionManager.getInstancia().openSession();
+		clubes = Controlador.getInstancia().obtenerClubesDisponiblesCampeonato(idCampeonato);
+		SessionManager.getInstancia().closeSession(); 
+		} catch (CampeonatoException e) {
+			System.out.println(e.getMessage());
+		}
+		return clubes;
+		
+	}
+	
+	
 }
 
