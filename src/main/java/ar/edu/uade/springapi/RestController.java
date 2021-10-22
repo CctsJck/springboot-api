@@ -17,6 +17,7 @@ import exceptions.ClubException;
 import exceptions.JugadorException;
 import exceptions.PartidoException;
 import exceptions.ResponsableException;
+import modelo.Responsable;
 import sessionManager.SessionManager;
 import vo.CampeonatoVO;
 import vo.ClubVO;
@@ -232,7 +233,7 @@ public class RestController {
 	
 	@RequestMapping("/obtenerClubesDisponiblesCampeonato")
 	@CrossOrigin(origins="http://localhost:3000/")
-	public List<ClubVO> getClubesDisponiblesCampeonato(int idCampeonato) throws CampeonatoException{
+	public List<ClubVO> getClubesDisponiblesCampeonato(@RequestParam(name="idCampeonato") int idCampeonato) throws CampeonatoException{
 		List <ClubVO> clubes = new ArrayList<>();
 		try {
 		SessionManager.getInstancia().openSession();
@@ -242,6 +243,28 @@ public class RestController {
 			System.out.println(e.getMessage());
 		}
 		return clubes;
+		
+	}
+	
+	@RequestMapping("/getJugadorPorId")
+	@CrossOrigin(origins="http://localhost:3000/")
+	public JugadorVO getJugadorPorId(@RequestParam(name="idJugador") int idJugador) throws JugadorException {
+		SessionManager.getInstancia().openSession();
+		JugadorVO jugador = Controlador.getInstancia().getJugadorPorId(idJugador);
+		SessionManager.getInstancia().closeSession();
+		return jugador;
+		
+		
+	}
+	
+	@RequestMapping("/getRepresentantePorId")
+	@CrossOrigin(origins="http://localhost:3000/")
+	public ResponsableVO getRepresentantePorId(@RequestParam(name="idRepresentante") int idRepresentante) throws ResponsableException {
+		SessionManager.getInstancia().openSession();
+		ResponsableVO representante = Controlador.getInstancia().getResponsablePorId(idRepresentante);
+		SessionManager.getInstancia().closeSession();
+		return representante;
+		
 		
 	}
 	
