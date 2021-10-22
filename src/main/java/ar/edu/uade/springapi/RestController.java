@@ -289,6 +289,10 @@ public class RestController {
 		
 		
 	}
+	@RequestMapping("/getPartidosByCampeonato")
+	@CrossOrigin(origins="http://localhost:3000/")
+	public void getPartidosByCampeonato() {}
+	
 	
 	
 }
