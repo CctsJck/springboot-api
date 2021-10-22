@@ -47,7 +47,7 @@ public class RestController {
 	
 	@RequestMapping("/getEstadisticaCampeonato")
 	@CrossOrigin(origins="http://localhost:3000/")
-	public String[][] getEstadisticasCampeonato(@RequestParam(name="idCampeonato") int idCampeonato) throws CampeonatoException{
+	public String[][] getEstadisticasCampeonato(@RequestParam(name="idCampeonato") int idCampeonato) throws CampeonatoException, ClubException{
 		SessionManager.getInstancia().openSession();
 		String[][] estadisticas = Controlador.getInstancia().getEstaditicaJugadoresCampeonato(idCampeonato);
 		System.out.println(estadisticas[0][0]);
@@ -264,6 +264,28 @@ public class RestController {
 		ResponsableVO representante = Controlador.getInstancia().getResponsablePorId(idRepresentante);
 		SessionManager.getInstancia().closeSession();
 		return representante;
+		
+		
+	}
+	
+	@RequestMapping("/getClubPorId")
+	@CrossOrigin(origins="http://localhost:3000/")
+	public ClubVO getClubPorId(@RequestParam(name="idClub") int idClub) throws ClubException {
+		SessionManager.getInstancia().openSession();
+		ClubVO club = Controlador.getInstancia().getClubPorId(idClub);
+		SessionManager.getInstancia().closeSession();
+		return club;
+		
+		
+	}
+	
+	@RequestMapping("/getClubPorIdRepresentante")
+	@CrossOrigin(origins="http://localhost:3000/")
+	public ClubVO getClubPorIdRepresentante(@RequestParam(name="idRepresentante") int idRepresentante) throws ClubException {
+		SessionManager.getInstancia().openSession();
+		ClubVO club = Controlador.getInstancia().getClubPorIdRepresentante(idRepresentante);
+		SessionManager.getInstancia().closeSession();
+		return club;
 		
 		
 	}
