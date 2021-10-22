@@ -17,6 +17,7 @@ import exceptions.ClubException;
 import exceptions.JugadorException;
 import exceptions.PartidoException;
 import exceptions.ResponsableException;
+import exceptions.TablaPosicionesException;
 import modelo.Responsable;
 import sessionManager.SessionManager;
 import vo.CampeonatoVO;
@@ -24,6 +25,7 @@ import vo.ClubVO;
 import vo.JugadorVO;
 import vo.PartidoVO;
 import vo.ResponsableVO;
+import vo.TablaPosicionesVO;
 
 
 @org.springframework.web.bind.annotation.RestController
@@ -289,6 +291,7 @@ public class RestController {
 		
 		
 	}
+	
 	@RequestMapping("/getPartidosByCampeonato")
 	@CrossOrigin(origins="http://localhost:3000/")
 	public List<PartidoVO> getPartidosByCampeonato(@RequestParam(name="idCampeonato") int idCampeonato) throws ClubException, CampeonatoException  {
@@ -305,7 +308,17 @@ public class RestController {
 		return partidos;
 	}
 	
+	@RequestMapping("/obtenerTablaCampeonato")
+	@CrossOrigin(origins="http://localhost:3000/")
+	public List<TablaPosicionesVO> obtenerTablaCampeonato(@RequestParam(name="idCampeonato") int idCampeonato) throws TablaPosicionesException{
+		List<TablaPosicionesVO> tablasVO = new ArrayList<TablaPosicionesVO>();
+		SessionManager.getInstancia().openSession();
+		tablasVO = Controlador.getInstancia().obtenerTablasCampeonato(idCampeonato);
+		SessionManager.getInstancia().closeSession();
+		return tablasVO;
+	}
 	
+	 
 	
 	
 }
