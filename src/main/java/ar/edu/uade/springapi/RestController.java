@@ -305,6 +305,15 @@ public class RestController {
 		return partidos;
 	}
 	
+	@RequestMapping("/obtenerClubesCampeonato")
+    @CrossOrigin(origins="http://localhost:3000/")
+    public List<ClubVO> getClubesCampeonato(int idCampeonato) throws CampeonatoException{
+        SessionManager.getInstancia().openSession();
+        List <ClubVO> clubes = new ArrayList<>();
+        clubes = Controlador.getInstancia().getClubesCampeonato(idCampeonato);
+        SessionManager.getInstancia().closeSession(); 
+        return clubes;
+    }
 	
 	
 	
