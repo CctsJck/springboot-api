@@ -23,6 +23,7 @@ import sessionManager.SessionManager;
 import vo.CampeonatoVO;
 import vo.ClubVO;
 import vo.JugadorVO;
+import vo.MiembroVO;
 import vo.PartidoVO;
 import vo.ResponsableVO;
 import vo.TablaPosicionesVO;
@@ -341,6 +342,11 @@ public class RestController {
     @CrossOrigin(origins="http://localhost:3000/")
 	public List<ClubVO> obtenerClubes() throws ClubException{
 		return Controlador.getInstancia().obtenerClubes();
+	}
+	@RequestMapping("/obtenerJugadoresPartido")
+	@CrossOrigin(origins="http://localhost:3000/")
+	public List<MiembroVO> obtenerJugadoresPartido(int idPartido) throws ClubException{
+		return Controlador.getInstancia().obtenerJugadoresPartido(idPartido);
 	}
 
 	
