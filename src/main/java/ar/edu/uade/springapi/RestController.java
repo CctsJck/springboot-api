@@ -237,7 +237,7 @@ public class RestController {
 	
 	@RequestMapping("/obtenerClubesDisponiblesCampeonato")
 	@CrossOrigin(origins="http://localhost:3000/")
-	public List<ClubVO> getClubesDisponiblesCampeonato(@RequestParam(name="idCampeonato") int idCampeonato) throws CampeonatoException{
+	public List<ClubVO> getClubesDisponiblesCampeonato(@RequestParam(name="idCampeonato") int idCampeonato) throws CampeonatoException, ClubException{
 		List <ClubVO> clubes = new ArrayList<>();
 		try {
 	//	SessionManager.getInstancia().openSession();
@@ -335,6 +335,12 @@ public class RestController {
     @CrossOrigin(origins="http://localhost:3000/")
 	public List<ResponsableVO> obtenerRepresentantes() throws ResponsableException{
 		return Controlador.getInstancia().obtenerRepresentantes();
+	}
+	
+	@RequestMapping("/obtenerClubes")
+    @CrossOrigin(origins="http://localhost:3000/")
+	public List<ClubVO> obtenerClubes() throws ClubException{
+		return Controlador.getInstancia().obtenerClubes();
 	}
 
 	
