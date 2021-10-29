@@ -229,6 +229,8 @@ public class RestController {
 	public List<CampeonatoVO> getCampeonatos(){
 	//	SessionManager.getInstancia().openSession();
 		List<CampeonatoVO> campeonatos = Controlador.getInstancia().obtenerCampeonatos();
+		
+		
 	//	SessionManager.getInstancia().closeSession(); 
 		return campeonatos;	
 	}
@@ -262,9 +264,9 @@ public class RestController {
 	@RequestMapping("/getRepresentantePorId")
 	@CrossOrigin(origins="http://localhost:3000/")
 	public ResponsableVO getRepresentantePorId(@RequestParam(name="idRepresentante") int idRepresentante) throws ResponsableException {
-	//	SessionManager.getInstancia().openSession();
+		//SessionManager.getInstancia().openSession();
 		ResponsableVO representante = Controlador.getInstancia().getResponsablePorId(idRepresentante);
-	//	SessionManager.getInstancia().closeSession();
+		//SessionManager.getInstancia().closeSession();
 		return representante;
 		
 		
@@ -283,6 +285,7 @@ public class RestController {
 	
 	@RequestMapping("/getClubPorIdRepresentante")
 	@CrossOrigin(origins="http://localhost:3000/")
+	
 	public ClubVO getClubPorIdRepresentante(@RequestParam(name="idRepresentante") int idRepresentante) throws ClubException {
 	//	SessionManager.getInstancia().openSession();
 		ClubVO club = Controlador.getInstancia().getClubPorIdRepresentante(idRepresentante);
@@ -327,6 +330,13 @@ public class RestController {
     //    SessionManager.getInstancia().closeSession(); 
         return clubes;
     }
+	
+	@RequestMapping("/obtenerRepresentantes")
+    @CrossOrigin(origins="http://localhost:3000/")
+	public List<ResponsableVO> obtenerRepresentantes() throws ResponsableException{
+		return Controlador.getInstancia().obtenerRepresentantes();
+	}
+
 	
 	 
 	
