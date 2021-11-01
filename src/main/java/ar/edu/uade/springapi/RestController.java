@@ -48,6 +48,14 @@ public class RestController {
 	//	SessionManager.getInstancia().closeSession();
 		return jugadoresVO;
 	}
+	@RequestMapping("/getEstadisticaJugadorCampeonato")
+    @CrossOrigin(origins="http://localhost:3000/")
+    public String[] getEstadisticasCampeonato(@RequestParam(name="idJugador") int idJugador,@RequestParam(name="idCampeonato") int idCampeonato) throws CampeonatoException, ClubException, JugadorException{
+        //SessionManager.getInstancia().openSession();
+        String[] estadisticas = Controlador.getInstancia().getEstaditicaJugadorCampeonato(idJugador,idCampeonato);
+    //    SessionManager.getInstancia().closeSession();
+        return estadisticas;
+    }
 	
 	@RequestMapping("/getEstadisticaCampeonato")
 	@CrossOrigin(origins="http://localhost:3000/")
