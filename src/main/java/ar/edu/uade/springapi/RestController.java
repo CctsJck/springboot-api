@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -123,7 +124,7 @@ public class RestController {
 		Controlador.getInstancia().modificarRepresentante(idRepresentante, nombre, DNI, tipoDocumento, idClub);
 	//	SessionManager.getInstancia().closeSession();
 	}
-	@DeleteMapping("/eliminarRepresentante")
+	@PutMapping("/eliminarRepresentante")
 	@CrossOrigin(origins="http://localhost:3000/")
 	public void eliminarRepresentante (@RequestParam(name="idRepresentante") int idRepresentante) throws ResponsableException, ClubException {
 	//	SessionManager.getInstancia().openSession();
@@ -287,6 +288,11 @@ public class RestController {
 		return club;
 		
 		
+	}
+	
+	@ExceptionHandler
+	public String handleClubException(ClubException exception) {
+		return exception.getMensaje();
 	}
 	
 	@RequestMapping("/getClubPorIdRepresentante")
