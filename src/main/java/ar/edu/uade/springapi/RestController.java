@@ -266,7 +266,12 @@ public class RestController {
 	public ResponsableVO getRepresentantePorId(@RequestParam(name="idRepresentante") int idRepresentante) throws ResponsableException {
 		//SessionManager.getInstancia().openSession();
 		ResponsableVO representante = Controlador.getInstancia().getResponsablePorId(idRepresentante);
+
 		//SessionManager.getInstancia().closeSession();
+
+	//	SessionManager.getInstancia().closeSession();
+		System.out.println(representante.getIdClub());
+
 		return representante;
 		
 		
