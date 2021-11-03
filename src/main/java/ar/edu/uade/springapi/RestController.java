@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import controlador.Controlador;
 import exceptions.CampeonatoException;
 import exceptions.ClubException;
+import exceptions.FaltaException;
+import exceptions.GolException;
 import exceptions.JugadorException;
+import exceptions.MiembroException;
 import exceptions.PartidoException;
 import exceptions.ResponsableException;
 import exceptions.TablaPosicionesException;
@@ -274,18 +277,14 @@ public class RestController {
 	@RequestMapping("/getRepresentantePorId")
 	@CrossOrigin(origins="http://localhost:3000/")
 	public ResponsableVO getRepresentantePorId(@RequestParam(name="idRepresentante") int idRepresentante) throws ResponsableException {
-		//SessionManager.getInstancia().openSession();
 		ResponsableVO representante = Controlador.getInstancia().getResponsablePorId(idRepresentante);
-
-		//SessionManager.getInstancia().closeSession();
-
-	//	SessionManager.getInstancia().closeSession();
-		System.out.println(representante.getIdClub());
-
 		return representante;
 		
 		
 	}
+	
+	
+	
 	
 	@RequestMapping("/getClubPorId")
 	@CrossOrigin(origins="http://localhost:3000/")
@@ -298,10 +297,7 @@ public class RestController {
 		
 	}
 	
-	@ExceptionHandler
-	public String handleClubException(ClubException exception) {
-		return exception.getMensaje();
-	}
+	
 	
 	@RequestMapping("/getClubPorIdRepresentante")
 	@CrossOrigin(origins="http://localhost:3000/")
@@ -367,6 +363,57 @@ public class RestController {
 	public List<MiembroVO> obtenerJugadoresPartido(int idPartido) throws ClubException{
 		return Controlador.getInstancia().obtenerJugadoresPartido(idPartido);
 	}
+	
+	
+	//Exception Handler, No se como hacer otro controlador y vincularlo con este
+	
+	@ExceptionHandler
+	public String handleCampeonatoException(CampeonatoException exception) {
+		return exception.getMensaje();
+	}
+	
+	@ExceptionHandler
+	public String handleClubException(ClubException exception) {
+		return exception.getMensaje();
+	}
+	
+	@ExceptionHandler
+	public String handleFaltaException(FaltaException exception) {
+		return exception.getMensaje();
+	}
+	
+	@ExceptionHandler
+	public String handleGolException(GolException exception) {
+		return exception.getMensaje();
+	}
+	
+	@ExceptionHandler
+	public String handleJugadorException(JugadorException exception) {
+		return exception.getMensaje();
+	}
+	
+	@ExceptionHandler
+	public String handleMiembroException(MiembroException exception) {
+		return exception.getMensaje();
+	}
+	
+	@ExceptionHandler
+	public String handlePartidoException(PartidoException exception) {
+		return exception.getMensaje();
+	}
+	
+	@ExceptionHandler
+	public String handleRepresentanteException(ResponsableException exception) {
+		return exception.getMensaje();
+	}
+	
+	@ExceptionHandler
+	public String handleTablaPosicionesException(TablaPosicionesException exception) {
+		return exception.getMensaje();
+	}
+	
+	
+	
 
 	
 	 
