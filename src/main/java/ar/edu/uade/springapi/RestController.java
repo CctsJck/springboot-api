@@ -358,10 +358,17 @@ public class RestController {
 	public List<ClubVO> obtenerClubes() throws ClubException{
 		return Controlador.getInstancia().obtenerClubes();
 	}
+	
 	@RequestMapping("/obtenerJugadoresPartido")
 	@CrossOrigin(origins="http://localhost:3000/")
 	public List<MiembroVO> obtenerJugadoresPartido(int idPartido) throws ClubException{
 		return Controlador.getInstancia().obtenerJugadoresPartido(idPartido);
+	}
+	
+	@RequestMapping("/partidosPendientesValidar")
+    @CrossOrigin(origins="http://localhost:3000/")
+	public List<PartidoVO> obtenerPartidosPendientesValidar(@RequestParam(name="idClub") int idClub) throws PartidoException{
+		return Controlador.getInstancia().obtenerPartidosPendientesValidar(idClub);
 	}
 	
 	
@@ -412,7 +419,7 @@ public class RestController {
 		return exception.getMensaje();
 	}
 	
-	
+	 
 	
 
 	

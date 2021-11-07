@@ -1,9 +1,9 @@
 Server: 
-    port: 443
+    port: 8080
     servlet:
         context-path: 
     ssl:
-        enabled: true
+        enabled: false
         key-alias: local_ssl
         key-store: classpath:local-ssl.p12
         key-store-type: PKCS12
