@@ -22,6 +22,7 @@ import exceptions.MiembroException;
 import exceptions.PartidoException;
 import exceptions.ResponsableException;
 import exceptions.TablaPosicionesException;
+import exceptions.UsuarioException;
 import modelo.Responsable;
 import sessionManager.SessionManager;
 import vo.CampeonatoVO;
@@ -31,6 +32,7 @@ import vo.MiembroVO;
 import vo.PartidoVO;
 import vo.ResponsableVO;
 import vo.TablaPosicionesVO;
+import vo.UsuarioVO;
 
 
 @org.springframework.web.bind.annotation.RestController
@@ -371,8 +373,30 @@ public class RestController {
 		return Controlador.getInstancia().obtenerPartidosPendientesValidar(idClub);
 	}
 	
+	@RequestMapping("/getUsuarioByIdAndPassword")
+    @CrossOrigin(origins="http://localhost:3000/")
+	public UsuarioVO getUsuarioByIdAndPassword(@RequestParam(name="idUsuario") int idUsuario, @RequestParam(name="password") String password) throws UsuarioException {
+		return Controlador.getInstancia().getUsuarioByIdAndPassword(idUsuario, password);
+	}
+	
+	@RequestMapping("/getJugadorByIdUsuario")
+    @CrossOrigin(origins="http://localhost:3000/")
+	public JugadorVO getJugadorByIdUsuario(@RequestParam(name="idUsuario") int idUsuario) throws JugadorException {
+		return Controlador.getInstancia().getJugadorByIdUsuario(idUsuario);
+	}
+	
+	@RequestMapping("/getRepresentanteByIdUsuario")
+    @CrossOrigin(origins="http://localhost:3000/")
+	public ResponsableVO getResponsableByIdUsuario(@RequestParam(name="idUsuario") int idUsuario) throws ResponsableException {
+		return Controlador.getInstancia().getRepresentanteByIdUsuario(idUsuario);
+	}
 	
 	//Exception Handler, No se como hacer otro controlador y vincularlo con este
+	
+	@ExceptionHandler
+	public String handleUsuarioException(UsuarioException exception) {
+		return exception.getMensaje();
+	}
 	
 	@ExceptionHandler
 	public String handleCampeonatoException(CampeonatoException exception) {
