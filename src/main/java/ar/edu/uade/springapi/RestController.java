@@ -383,6 +383,32 @@ public class RestController {
 		return Controlador.getInstancia().getRepresentanteByIdUsuario(idUsuario);
 	}
 	
+	@RequestMapping("/getUsuarioByIdJugador")
+    @CrossOrigin(origins="http://localhost:3000/")
+	public UsuarioVO getUsuarioByIdJugador(@RequestParam(name="idJugador") int idJugador) throws UsuarioException {
+		return Controlador.getInstancia().getUsuarioByIdJugador(idJugador);
+	}
+	
+	@PutMapping("/updateJugadorPassword")
+    @CrossOrigin(origins="http://localhost:3000/")
+	public void updateJugadorPassword(@RequestParam(name="idJugador") int idJugador, @RequestParam(name="password") String password) throws UsuarioException {
+		Controlador.getInstancia().updateUserPassword(idJugador, password);
+	}
+	
+	@RequestMapping("/getUsuarioByIdRepresentante")
+    @CrossOrigin(origins="http://localhost:3000/")
+	public UsuarioVO getUsuarioByIdRepresentante(@RequestParam(name="idRepresentante") int idRepresentante) throws UsuarioException {
+		return Controlador.getInstancia().getUsuarioByIdRepresentante(idRepresentante);
+	}
+	
+	@PutMapping("/updateReprePassword")
+    @CrossOrigin(origins="http://localhost:3000/")
+	public void updateReprePassword(@RequestParam(name="idRepre") int idRepre, @RequestParam(name="password") String password) throws UsuarioException {
+		Controlador.getInstancia().updateUserPassword(idRepre, password);
+	}
+	
+	
+	
 	//Exception Handler, No se como hacer otro controlador y vincularlo con este
 	
 	@ExceptionHandler
