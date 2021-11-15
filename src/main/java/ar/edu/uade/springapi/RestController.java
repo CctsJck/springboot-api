@@ -404,7 +404,7 @@ public class RestController {
 	@PutMapping("/updateReprePassword")
     @CrossOrigin(origins="http://localhost:3000/")
 	public void updateReprePassword(@RequestParam(name="idRepre") int idRepre, @RequestParam(name="password") String password) throws UsuarioException {
-		Controlador.getInstancia().updateUserPassword(idRepre, password);
+		Controlador.getInstancia().updateReprePassword(idRepre, password);
 	}
 	
 	
