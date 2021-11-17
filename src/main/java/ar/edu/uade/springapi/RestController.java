@@ -421,6 +421,12 @@ public class RestController {
 		return Controlador.getInstancia().getGolesPartido(idPartido);
 	}
 	
+	@RequestMapping("/getPartidoById")
+    @CrossOrigin(origins="http://localhost:3000/")
+	public PartidoVO getPartidoById(@RequestParam(name="idPartido") int idPartido) throws ClubException, PartidoException {
+		return Controlador.getInstancia().getPartidoById(idPartido);
+	}
+	
 	
 	
 	
