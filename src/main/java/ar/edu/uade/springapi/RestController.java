@@ -27,6 +27,8 @@ import modelo.Responsable;
 import sessionManager.SessionManager;
 import vo.CampeonatoVO;
 import vo.ClubVO;
+import vo.FaltaVO;
+import vo.GolVO;
 import vo.JugadorVO;
 import vo.MiembroVO;
 import vo.PartidoVO;
@@ -393,7 +395,7 @@ public class RestController {
     @CrossOrigin(origins="http://localhost:3000/")
 	public void updateJugadorPassword(@RequestParam(name="idJugador") int idJugador, @RequestParam(name="password") String password) throws UsuarioException {
 		Controlador.getInstancia().updateUserPassword(idJugador, password);
-	}
+	} 
 	
 	@RequestMapping("/getUsuarioByIdRepresentante")
     @CrossOrigin(origins="http://localhost:3000/")
@@ -406,6 +408,19 @@ public class RestController {
 	public void updateReprePassword(@RequestParam(name="idRepre") int idRepre, @RequestParam(name="password") String password) throws UsuarioException {
 		Controlador.getInstancia().updateReprePassword(idRepre, password);
 	}
+	
+	@RequestMapping("/getFaltasPartido")
+    @CrossOrigin(origins="http://localhost:3000/")
+	public List<FaltaVO> getFaltasPartido(@RequestParam(name="idPartido") int idPartido) throws FaltaException{
+		return Controlador.getInstancia().getFaltasPartido(idPartido);
+	}
+	
+	@RequestMapping("/getGolesPartido")
+    @CrossOrigin(origins="http://localhost:3000/")
+	public List<GolVO> getGolesPartido(@RequestParam(name="idPartido") int idPartido) throws GolException{
+		return Controlador.getInstancia().getGolesPartido(idPartido);
+	}
+	
 	
 	
 	
