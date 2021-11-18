@@ -252,6 +252,15 @@ public class RestController {
 		return campeonatos;	
 	}
 	
+	@RequestMapping("/obtenerCampeonatosDeUnJugador")
+	@CrossOrigin(origins="http://localhost:3000/")
+	public List<CampeonatoVO> ObtenerCampeonatosPorIdJugador(@RequestParam(name="idJugador") int idJugador){
+		List<CampeonatoVO> campeonatos = Controlador.getInstancia().obtenerCampeonatosPorIdJugador(idJugador);
+		
+		return campeonatos;
+	}
+	
+	
 	@RequestMapping("/obtenerClubesDisponiblesCampeonato")
 	@CrossOrigin(origins="http://localhost:3000/")
 	public List<ClubVO> getClubesDisponiblesCampeonato(@RequestParam(name="idCampeonato") int idCampeonato) throws CampeonatoException, ClubException{
