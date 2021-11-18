@@ -52,6 +52,8 @@ public class RestController {
 		List<JugadorVO> jugadoresVO = Controlador.getInstancia().getJugadoresClub(idClub);
 		return jugadoresVO;
 	}
+
+
 	@RequestMapping("/getEstadisticaJugadorCampeonato")
     @CrossOrigin(origins="http://localhost:3000/")
     public String[] getEstadisticasCampeonato(@RequestParam(name="idJugador") int idJugador,@RequestParam(name="idCampeonato") int idCampeonato) throws CampeonatoException, ClubException, JugadorException{
