@@ -109,9 +109,9 @@ public class RestController {
 	}
 	@PostMapping("/agregarJugador")
 	@CrossOrigin(origins="http://localhost:3000/")
-	public void agregarJugador(@RequestParam(name="tipoDocumento") String tipoDocumento, @RequestParam(name="documento") int documento,@RequestParam(name="nombre") String nombre, @RequestParam(name="apellido") String apellido, @RequestParam(name="idClub") int idClub, @RequestParam(name="fechaNacimiento") Date fechaNacimiento) throws ClubException, UsuarioException, JugadorException {
+	public void agregarJugador(@RequestParam(name="tipoDocumento") String tipoDocumento, @RequestParam(name="documento") int documento,@RequestParam(name="nombre") String nombre, @RequestParam(name="apellido") String apellido, @RequestParam(name="idClub") int idClub,@RequestParam(name="fichaje") Date fichaje, @RequestParam(name="fechaNacimiento") Date fechaNacimiento) throws ClubException, UsuarioException, JugadorException {
 	
-		Controlador.getInstancia().agregarJugador(tipoDocumento, documento, nombre, apellido, idClub, fechaNacimiento);		
+		Controlador.getInstancia().agregarJugador(tipoDocumento, documento, nombre, apellido, idClub, fechaNacimiento,fichaje);		
 	
 	}
 	
@@ -165,7 +165,7 @@ public class RestController {
 	
 	@PostMapping("/agregarJugadorPartido")
 	@CrossOrigin(origins="http://localhost:3000/")
-	public void agregarJugadorPartido(@RequestParam(name="idPartido") int idPartido,@RequestParam(name="idJugador") int idJugador,@RequestParam(name="idClub") int idClub) throws ClubException, PartidoException, JugadorException {
+	public void agregarJugadorPartido(@RequestParam(name="idPartido") int idPartido,@RequestParam(name="idJugador") int idJugador,@RequestParam(name="idClub") int idClub) throws ClubException, PartidoException, JugadorException, CampeonatoException {
 	
 		Controlador.getInstancia().agregarJugadorPartido(idPartido, idJugador, idClub);
 	
@@ -212,12 +212,10 @@ public class RestController {
 	}*/
 	
 	@PostMapping("/crearPartido")
-	@CrossOrigin(origins="http://localhost:3000/")
-	public void crearPartido(@RequestParam(name="nroFecha") int nroFecha,@RequestParam(name="nroZona") int nroZona,@RequestParam(name="categoria") int categoria, @RequestParam(name="clubLocal") Integer clubLocal, @RequestParam(name="clubVisitante") Integer clubVisitante,@RequestParam(name="fechaPartido") Date fechaPartido,@RequestParam(name="idCampeonato") Integer idCampeonato) throws CampeonatoException, ClubException {
-	
-		Controlador.getInstancia().crearPartido(nroFecha, nroZona, categoria, clubLocal, clubVisitante, fechaPartido, idCampeonato);
-	
-	}
+    @CrossOrigin(origins="http://localhost:3000/")
+    public void crearPartido(@RequestParam(name="nroFecha") int nroFecha,@RequestParam(name="nroZona") int nroZona,@RequestParam(name="categoria") int categoria, @RequestParam(name="clubLocal") Integer clubLocal, @RequestParam(name="clubVisitante") Integer clubVisitante,@RequestParam(name="fechaPartido") Date fechaPartido,@RequestParam(name="idCampeonato") Integer idCampeonato,@RequestParam(name="fase")String fase) throws CampeonatoException, ClubException {
+        Controlador.getInstancia().crearPartido(nroFecha, nroZona, categoria, clubLocal, clubVisitante, fechaPartido, idCampeonato,fase);
+    }
 	
 	@PostMapping("/crearPartidoAuto")
 	@CrossOrigin(origins="http://localhost:3000/")
