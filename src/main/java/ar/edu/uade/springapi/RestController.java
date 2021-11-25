@@ -246,7 +246,7 @@ public class RestController {
 	
 	@RequestMapping("/obtenerCampeonatos")
 	@CrossOrigin(origins="http://localhost:3000/")
-	public List<CampeonatoVO> getCampeonatos(){
+	public List<CampeonatoVO> getCampeonatos() throws CampeonatoException{
 
 		List<CampeonatoVO> campeonatos = Controlador.getInstancia().obtenerCampeonatos();
 		return campeonatos;	
@@ -460,6 +460,12 @@ public class RestController {
     @CrossOrigin(origins="http://localhost:3000/")
 	public void agregarJugadorTorneo(@RequestParam(name="idJugador") int idJugador,@RequestParam(name="idCampeonato") int idCampeonato) throws CampeonatoException, JugadorException {
 		Controlador.getInstancia().agregarJugadorTorneo(idJugador, idCampeonato);
+	}
+	
+	@RequestMapping("/getCampeonatosByIdClub")
+    @CrossOrigin(origins="http://localhost:3000/")
+	public List<CampeonatoVO> getCampeonatosByIdClub(@RequestParam(name="idClub") int idClub) throws CampeonatoException{
+		return Controlador.getInstancia().getCampeontosByIdClub(idClub);
 	}
 	//Exception Handler, No se como hacer otro controlador y vincularlo con este
 	
