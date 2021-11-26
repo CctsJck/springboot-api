@@ -479,6 +479,31 @@ public class RestController {
 		Controlador.getInstancia().cambiarEstadoJugadorTorneo(idJugadorTorneo, estado);
 	}
 	
+	@RequestMapping("/getFasesByIdCampeonato")
+    @CrossOrigin(origins="http://localhost:3000/")
+	public List<String> getFasesByIdCampeonato(@RequestParam(name="idCampeonato") int idCampeonato) throws CampeonatoException{
+		return Controlador.getInstancia().getFasesByIdCampeonato(idCampeonato);
+	}
+	
+	@RequestMapping("/getTablasByIdCampeonatoAndFase")
+    @CrossOrigin(origins="http://localhost:3000/")
+	public List<TablaPosicionesVO> getTablasByIdCampeonatoAndFase(@RequestParam(name="idCampeonato") int idCampeonato, @RequestParam(name="fase") String fase) throws TablaPosicionesException{
+		return Controlador.getInstancia().getTablaPosicionesByFaseAndIdCampeonato(idCampeonato, fase);
+	}
+	
+	@PutMapping("/ingresaJugadorPartido")
+    @CrossOrigin(origins="http://localhost:3000/")
+	public void ingresaJugadorPartido(@RequestParam(name="idPartido") int idPartido, @RequestParam(name="idJugador") int idJugador,@RequestParam(name="ingreso") int ingreso) throws ClubException, PartidoException {
+		Controlador.getInstancia().ingresaJugadorPartido(idPartido, idJugador, ingreso);
+	}
+	
+	@PutMapping("/egresaJugadorPartido")
+    @CrossOrigin(origins="http://localhost:3000/")
+	public void egresaJugadorPartido(@RequestParam(name="idPartido") int idPartido, @RequestParam(name="idJugador") int idJugador,@RequestParam(name="ingreso") int ingreso) throws ClubException, PartidoException {
+		Controlador.getInstancia().egresaJugadorPartido(idPartido, idJugador, ingreso);
+	}
+	
+	
 	
 	
 	//Exception Handler, No se como hacer otro controlador y vincularlo con este
