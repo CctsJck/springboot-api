@@ -503,6 +503,12 @@ public class RestController {
 		Controlador.getInstancia().egresaJugadorPartido(idPartido, idJugador, ingreso);
 	}
 	
+	@RequestMapping("/getIngresosEgresosPartido")
+    @CrossOrigin(origins="http://localhost:3000/")
+	public List<MiembroVO> getIngresosEgresosPartido(@RequestParam(name="idPartido") int idPartido) throws ClubException, PartidoException{
+		return Controlador.getInstancia().getIngresosEgresosPartido(idPartido);
+	}
+	
 	
 	
 	
