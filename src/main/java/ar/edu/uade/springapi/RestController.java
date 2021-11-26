@@ -213,10 +213,9 @@ public class RestController {
 	}*/
 	
 	@PostMapping("/crearPartido")
-
 	@CrossOrigin(origins="http://localhost:3000/")
-	public void crearPartido(@RequestParam(name="nroFecha") int nroFecha,@RequestParam(name="nroZona") int nroZona,@RequestParam(name="categoria") int categoria, @RequestParam(name="clubLocal") Integer clubLocal, @RequestParam(name="clubVisitante") Integer clubVisitante,@RequestParam(name="fechaPartido") Date fechaPartido,@RequestParam(name="idCampeonato") Integer idCampeonato,@RequestParam(name="fase")String fase) throws CampeonatoException, ClubException {
-		Controlador.getInstancia().crearPartido(nroFecha, nroZona, categoria, clubLocal, clubVisitante, fechaPartido, idCampeonato,fase);	
+	public void crearPartido(@RequestParam(name="nroFecha") int nroFecha,@RequestParam(name="nroZona") int nroZona,@RequestParam(name="clubLocal") Integer clubLocal, @RequestParam(name="clubVisitante") Integer clubVisitante,@RequestParam(name="fechaPartido") Date fechaPartido,@RequestParam(name="idCampeonato") Integer idCampeonato,@RequestParam(name="fase")String fase) throws CampeonatoException, ClubException {
+		Controlador.getInstancia().crearPartido(nroFecha, nroZona, clubLocal, clubVisitante, fechaPartido, idCampeonato,fase);	
 	}
 
 	@PostMapping("/crearPartidoAuto")
