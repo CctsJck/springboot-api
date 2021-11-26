@@ -450,10 +450,10 @@ public class RestController {
 		return Controlador.getInstancia().getCampeonatoById(idCampeonato);
 	}
 	
-	@RequestMapping("/getJugadoresHabilitados")
+	@RequestMapping("/getJugadoresHabilitadosClub")
     @CrossOrigin(origins="http://localhost:3000/")
-	public List<JugadoresTorneoVO> getJugadoresHabilitados(@RequestParam(name="idCampeonato") int idCampeonato) throws CampeonatoException {
-		return Controlador.getInstancia().getJugadoresHabilitados(idCampeonato);
+	public List<JugadoresTorneoVO> getJugadoresHabilitadosClub(@RequestParam(name="idCampeonato") int idCampeonato,@RequestParam(name="idClub") int idClub) throws CampeonatoException {
+		return Controlador.getInstancia().getJugadoresHabilitadosClub(idCampeonato,idClub);
 	}
 	
 	@PostMapping("/agregarJugadorTorneo")
