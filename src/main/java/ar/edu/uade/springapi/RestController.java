@@ -474,6 +474,14 @@ public class RestController {
 		return Controlador.getInstancia().getJugadoresDisponiblesTorneo(idClub, idCampeonato);
 	}
 	
+	@PutMapping("/cambiarEstadoJugadorTorneo")
+    @CrossOrigin(origins="http://localhost:3000/")
+	public void cambiarEstadoJugadorTorneo(@RequestParam(name="idJugadorTorneo") int idJugadorTorneo, @RequestParam(name="estado") boolean estado) {
+		Controlador.getInstancia().cambiarEstadoJugadorTorneo(idJugadorTorneo, estado);
+	}
+	
+	
+	
 	//Exception Handler, No se como hacer otro controlador y vincularlo con este
 	
 	@ExceptionHandler
