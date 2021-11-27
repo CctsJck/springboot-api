@@ -509,6 +509,12 @@ public class RestController {
 		return Controlador.getInstancia().getIngresosEgresosPartido(idPartido);
 	}
 	
+	@RequestMapping("/getJugadoresPartido")
+    @CrossOrigin(origins="http://localhost:3000/")
+	public List<JugadorVO> getJugadoresPartido(@RequestParam(name="idPartido") int idPartido) throws JugadorException{
+		return Controlador.getInstancia().getJugadoresPartido(idPartido);
+	}
+	
 	
 	
 	
