@@ -458,7 +458,8 @@ public class RestController {
 	@PostMapping("/agregarJugadorTorneo")
     @CrossOrigin(origins="http://localhost:3000/")
 	public void agregarJugadorTorneo(@RequestParam(name="idJugador") int idJugador,@RequestParam(name="idCampeonato") int idCampeonato) throws CampeonatoException, JugadorException {
-		Controlador.getInstancia().agregarJugadorTorneo(idJugador, idCampeonato);
+		Controlador.getInstancia().agregarJugadorCampeonato(idJugador, idCampeonato);
+
 	}
 	
 	@RequestMapping("/getCampeonatosByIdClub")
@@ -514,6 +515,12 @@ public class RestController {
 	public List<JugadorVO> getJugadoresPartido(@RequestParam(name="idPartido") int idPartido) throws JugadorException{
 		return Controlador.getInstancia().getJugadoresPartido(idPartido);
 	}
+	
+	@RequestMapping("/getJugadoresAgregarATorneo")
+    @CrossOrigin(origins="http://localhost:3000/")
+    public List<JugadorVO> getJugadoresAgregarATorneo(@RequestParam(name="idCampeonato") int idCampeonato, @RequestParam(name="idClub") int idClub) throws JugadorException{
+        return Controlador.getInstancia().getJugadoresAgregarATorneo(idCampeonato, idClub);
+    }
 	
 	
 	
