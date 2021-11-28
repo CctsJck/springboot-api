@@ -522,10 +522,23 @@ public class RestController {
         return Controlador.getInstancia().getJugadoresAgregarATorneo(idCampeonato, idClub);
     }
 	
+
 	@DeleteMapping("/eliminarMiembro")
 	@CrossOrigin(origins="http://localhost:3000/")
     public void eliminarMiembro(@RequestParam(name="idPartido") int idPartido, @RequestParam(name="idJugador") int idJugador) throws JugadorException{
         Controlador.getInstancia().eliminarMiembro(idPartido, idJugador);
+
+	@RequestMapping("/getTablasGruposCamp")
+    @CrossOrigin(origins="http://localhost:3000/")
+    public TablaPosicionesVO[][] getTablasGruposCamp(@RequestParam(name="idCampeonato") int idCampeonato) throws CampeonatoException{
+        return Controlador.getInstancia().crearTablasGrupos(idCampeonato);
+    }
+	
+	@RequestMapping("/getJugadorAgregarAPartido")
+    @CrossOrigin(origins="http://localhost:3000/")
+    public List<JugadorVO> getJugadorAgregarAPartido(@RequestParam(name="idCampeonato") int idCampeonato,@RequestParam(name="idPartido") int idPartido, @RequestParam(name="idClub") int idClub) throws JugadorException{
+        return Controlador.getInstancia().getJugadorAgregarAPartido(idCampeonato,idPartido,idClub);
+
     }
 	
 	
