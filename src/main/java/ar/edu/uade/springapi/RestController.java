@@ -522,6 +522,13 @@ public class RestController {
         return Controlador.getInstancia().getJugadoresAgregarATorneo(idCampeonato, idClub);
     }
 	
+	@DeleteMapping("/eliminarMiembro")
+	@CrossOrigin(origins="http://localhost:3000/")
+    public void eliminarMiembro(@RequestParam(name="idPartido") int idPartido, @RequestParam(name="idJugador") int idJugador) throws JugadorException{
+        Controlador.getInstancia().eliminarMiembro(idPartido, idJugador);
+    }
+	
+	
 	
 	
 	
